@@ -43,10 +43,10 @@ def paySuccess(request):
     }
     _data = {
         "cid": "TC0ONETIME",    # 테스트용 코드
-        "tid": request.session['tid'],  # 결제 요청시 세션에 저장한 tid
+        "tid": request.session['tid'],  
         'partner_order_id':'partner_order_id',
-        'partner_user_id':'partner_user_id',    # 유저 아이디
-        'pg_token': request.GET['pg_token'],     # 쿼리 스트링으로 받은 pg토큰
+        'partner_user_id':'partner_user_id',    
+        'pg_token': request.GET['pg_token'],     
     }
     _res = requests.post(_url, data=_data, headers=_headers)
     _result = _res.json()
