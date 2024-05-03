@@ -22,14 +22,14 @@ def kakaopay(request):
             'total_amount':'720',
             'vat_amount':'0',
             'tax_free_amount':'0',  
-            'approval_url':'http://127.0.0.1:8000/paySuccess', 
+            'approval_url':'http://127.0.0.1:8000/kakaopay/paySuccess', 
             'fail_url':'http://127.0.0.1:8000/payFail',
             'cancel_url':'http://127.0.0.1:8000/payCancel'
             }
 
         _res = requests.post(_url, headers=_headers, data=_data)
         request.session['tid'] = _res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
-        next_url = _res.json()['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
+        next_url = _res.json()['next_redirect_pc_url']   
         return redirect(next_url)
 
     return render(request, 'kakaopay/kakaopay.html')
@@ -54,7 +54,7 @@ def paySuccess(request):
     if _result.get('msg'):
         return redirect('/payFail')
     else:
-        return render(request, 'paySuccess.html')
+        return render(request, 'kakaopay/paySuccess.html')
 
 
 def payFail(request):

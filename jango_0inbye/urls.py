@@ -21,5 +21,5 @@ import kakaopay.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('kakaopay/', include('kakaopay.urls'))
+    path('kakaopay/', include('kakaopay.urls')),
 ]
