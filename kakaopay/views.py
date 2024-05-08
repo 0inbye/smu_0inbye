@@ -5,6 +5,10 @@ import json
 from django.template import loader
 
 
+def index(request):
+    return render(request,'kakaopay/index.html')
+
+
 def kakaopay(request):
     if request.method == "POST":
         _admin_key = '08e7fe96815c0226bacfa3ad85bac563'
@@ -58,7 +62,7 @@ def paySuccess(request):
 
 
 def payFail(request):
-    return render(request, 'payFail.html')
+    return render(request, 'payFail.html')  
 
 def payCancel(request):
     return render(request, 'payCancel.html')
