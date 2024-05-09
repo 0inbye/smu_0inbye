@@ -56,13 +56,13 @@ def paySuccess(request):
     _result = _res.json()
     
     if _result.get('msg'):
-        return redirect('/payFail')
+        return redirect('kakaopay/PayFail.html')
     else:
         return render(request, 'kakaopay/paySuccess.html')
 
 
 def payFail(request):
-    return render(request, 'payFail.html')  
+    return render(request, 'kakaopay/payFail.html')  
 
 def payCancel(request):
-    return render(request, 'payCancel.html')
+    return render(request, 'kakaopay/payCancel.html')
