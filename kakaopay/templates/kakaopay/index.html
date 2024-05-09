@@ -77,7 +77,13 @@
                 // 확인 버튼을 눌렀을 때 다른 페이지로 이동
                 if (confirmDialog) {
                 // kakaopay/kakaopay.html 페이지로 이동
-                window.location.href = 'http://127.0.0.1:8000/kakaopay/kakaoPay/';
+                    //window.location.href = 'http://127.0.0.1:8000/kakaopay/kakaoPay/';
+                    //window.location.href = 'http://127.0.0.1:8000/api_app/';
+                    //var redirectUrl = 'http://127.0.0.1:8000/api_app/success/?fullAddress=' + encodeURIComponent(fullAddress);
+                    //window.location.href = redirectUrl;
+
+                    var redirectUrl = 'http://127.0.0.1:8000/kakaopay/kakaoPay/?fullAddress=' + encodeURIComponent(fullAddress);
+                    window.location.href = redirectUrl;
                 }
                 
             }

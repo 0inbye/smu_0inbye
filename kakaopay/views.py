@@ -33,6 +33,10 @@ def kakaopay(request):
 
         _res = requests.post(_url, headers=_headers, data=_data)
         request.session['tid'] = _res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
+
+        full_address = request.GET.get('fullAddress')
+        request.session['full_address'] = full_address
+
         next_url = _res.json()['next_redirect_pc_url']   
         return redirect(next_url)
 
@@ -57,8 +61,13 @@ def paySuccess(request):
     
     if _result.get('msg'):
         return redirect('kakaopay/PayFail.html')
+
     else:
-        return render(request, 'kakaopay/paySuccess.html')
+        full_address = request.session.get('full_address')
+        print(full_address)
+        return render(request, 'kakaopay/paySuccess.html', {'full_address': full_address})
+
+
 
 
 def payFail(request):
