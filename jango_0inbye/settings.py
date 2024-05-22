@@ -31,8 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 설치 라이브러리
     'daphne',
     'channels',
+    'rest_framework',
+    'corsheaders',
+
+    # 앱
     'chat',
     'kakaopay.apps.KakaopayConfig',
     'api_app',
@@ -46,6 +51,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #cors 관련 추가
+    'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +84,7 @@ TEMPLATES = [
 ASGI_APPLICATION = 'jango_0inbye.asgi.application'
 # WSGI_APPLICATION = 'jango_0inbye.wsgi.application'
 
+#채널 레이어 (채팅)
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
