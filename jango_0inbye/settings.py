@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'chat',
     'kakaopay.apps.KakaopayConfig',
     'api_app',
     'django.contrib.admin',
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -69,7 +73,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'jango_0inbye.wsgi.application'
+ASGI_APPLICATION = 'jango_0inbye.asgi.application'
+# WSGI_APPLICATION = 'jango_0inbye.wsgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 
 # Database

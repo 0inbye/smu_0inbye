@@ -64,11 +64,8 @@ def paySuccess(request):
 
     else:
         full_address = request.session.get('full_address')
-        print(full_address)
+        #print(full_address)
         return render(request, 'kakaopay/paySuccess.html', {'full_address': full_address})
-
-
-
 
 def payFail(request):
     return render(request, 'kakaopay/payFail.html')  
